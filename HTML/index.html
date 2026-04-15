@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HojaTrail</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="logo">
+    🌿 <h1>HojaTrail</h1>
+    <p>Follow the trail to your next read!</p>
+  </div>
+
+  <nav>
+    <a href="index.html" class="leaf-btn">Mapas</a>
+    <a href="store.html" class="leaf-btn green">Rutas</a>
+    <a href="about.html" class="leaf-btn">About</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <input type="text" placeholder="Buscar senderos..." class="search"/>
+
+    <h2>🌲 Senderos Naturales</h2>
+
+    <div class="card">
+      <h3>Bosque Encantado</h3>
+      <span class="tag easy">Fácil</span>
+      <p>Distancia: 2.5 km</p>
+    </div>
+
+    <div class="card">
+      <h3>Cumbre Verde</h3>
+      <span class="tag medium">Moderado</span>
+      <p>Distancia: 5.8 km</p>
+    </div>
+
+    <div class="card">
+      <h3>Sendero de las Flores</h3>
+      <span class="tag easy">Fácil</span>
+      <p>Distancia: 1.8 km</p>
+    </div>
+  </aside>
+
+  <!-- Map Area -->
+  <section class="map-area">
+    <div class="map-placeholder">
+      <p>🌿 Interactive Map Goes Here</p>
+    </div>
+  </section>
+</main>
+
+<script src="js/cursor.js"></script>
+</body>
+</html>

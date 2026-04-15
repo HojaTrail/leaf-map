@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e8efe6, #dfe7d8);
+  cursor: none; /* hide default cursor */
+}
+
+/* HEADER */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #f4f7f2;
+}
+
+.logo h1 {
+  margin: 0;
+  color: #2f5d50;
+}
+
+.logo p {
+  margin: 0;
+  font-size: 12px;
+  color: #6c7a6f;
+}
+
+/* NAV LEAF BUTTONS */
+.leaf-btn {
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #d9c2a3;
+  text-decoration: none;
+  color: #2f5d50;
+  margin-left: 10px;
+}
+
+.leaf-btn.green {
+  background: #4e6b4a;
+  color: white;
+}
+
+/* LAYOUT */
+main {
+  display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 300px;
+  padding: 20px;
+  background: #f1f4ef;
+}
+
+.search {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+.tag {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.easy { background: #d4edda; }
+.medium { background: #ffe0b2; }
+.hard { background: #f8d7da; }
+
+/* MAP */
+.map-area {
+  flex: 1;
+}
+
+.map-placeholder {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c7a6f;
+}
+
+/* DETAILS PAGE */
+.details {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.details-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+}
+
+/* ABOUT */
+.about {
+  padding: 40px;
+  max-width: 700px;
+}
+
+.custom-cursor {
+  width: 30px;
+  height: 30px;
+  background: url('../img/tree.png') no-repeat center;
+  background-size: contain;
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.leaf {
+  width: 10px;
+  height: 10px;
+  background: green;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.7;
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  to {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
