@@ -43,10 +43,10 @@ const places = [
 ];
 
 const rutas = [
-  { icon: "🗺️", name: "Ruta del Centro",     desc: "Recorre las librerías del centro de Portland en un agradable paseo a pie.", tag: "3.2 km · A pie" },
-  { icon: "🌲", name: "Sendero del Bosque",   desc: "Explora la naturaleza del Forest Park y sus puntos de lectura al aire libre.", tag: "6.5 km · Bici" },
+  { icon: "🗺️", name: "Ruta del Centro", desc: "Recorre las librerías del centro de Portland en un agradable paseo a pie.", tag: "3.2 km · A pie" },
+  { icon: "🌲", name: "Sendero del Bosque", desc: "Explora la naturaleza del Forest Park y sus puntos de lectura al aire libre.", tag: "6.5 km · Bici" },
   { icon: "🌸", name: "Ruta de los Jardines", desc: "Visita el jardín japonés y bibliotecas cercanas en el barrio de Washington Park.", tag: "4.1 km · A pie" },
-  { icon: "🏙️", name: "Tour NE Portland",     desc: "Descubre las librerías independientes del vibrante barrio noreste de la ciudad.", tag: "5.0 km · Bici" },
+  { icon: "🏙️", name: "Tour NE Portland", desc: "Descubre las librerías independientes del vibrante barrio noreste de la ciudad.", tag: "5.0 km · Bici" },
 ];
 
 /* ─── STATE ─── */
@@ -73,6 +73,9 @@ function leafIcon(color = '#4a7c59') {
 
 /* ─── MAP INIT ─── */
 function initMap() {
+  const mapEl = document.getElementById('map');
+  if (!mapEl) return; // prevents crash if element missing
+
   leafMap = L.map('map', {
     center: [45.518, -122.676],
     zoom: 13,
@@ -84,7 +87,7 @@ function initMap() {
     maxZoom: 19
   }).addTo(leafMap);
 
-  document.getElementById('map').style.filter = 'sepia(20%) saturate(110%) hue-rotate(40deg)';
+  mapEl.style.filter = 'sepia(20%) saturate(110%) hue-rotate(40deg)';
 
   places.forEach(p => {
     const m = L.marker([p.lat, p.lng], { icon: leafIcon() })
@@ -98,14 +101,17 @@ function initMap() {
 function selectPlace(id) {
   activeId = id;
   const p = places.find(x => x.id === id);
+  if (!p) return;
 
-  renderSidebar(document.getElementById('searchInput').value);
+  renderSidebar(document.getElementById('searchInput')?.value || '');
 
   Object.entries(markers).forEach(([pid, m]) => {
     m.setIcon(leafIcon(parseInt(pid) === id ? '#c9a96e' : '#4a7c59'));
   });
 
-  leafMap.panTo([p.lat, p.lng], { animate: true, duration: 0.6 });
+  if (leafMap) {
+    leafMap.panTo([p.lat, p.lng], { animate: true, duration: 0.6 });
+  }
 
   document.getElementById('popupEmoji').textContent = p.emoji;
   document.getElementById('popupName').textContent  = p.name;
@@ -120,7 +126,7 @@ function selectPlace(id) {
   const card = document.getElementById('popupCard');
   card.style.display = 'block';
   card.style.animation = 'none';
-  card.offsetHeight; // force reflow
+  card.offsetHeight;
   card.style.animation = '';
 }
 
@@ -134,7 +140,9 @@ function closePopup() {
 
 /* ─── SIDEBAR ─── */
 function renderSidebar(query = '') {
-  const list     = document.getElementById('placesList');
+  const list = document.getElementById('placesList');
+  if (!list) return;
+
   const filtered = places.filter(p =>
     p.name.toLowerCase().includes(query.toLowerCase()) ||
     p.type.toLowerCase().includes(query.toLowerCase())
@@ -162,7 +170,10 @@ function renderSidebar(query = '') {
 
 /* ─── RUTAS ─── */
 function renderRutas() {
-  document.getElementById('rutasGrid').innerHTML = rutas.map(r => `
+  const grid = document.getElementById('rutasGrid');
+  if (!grid) return;
+
+  grid.innerHTML = rutas.map(r => `
     <div class="ruta-card">
       <div class="ruta-icon">${r.icon}</div>
       <h3>${r.name}</h3>
@@ -200,13 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => setView(btn.dataset.view));
   });
 
-  document.getElementById('searchInput').addEventListener('input', e => {
+  document.getElementById('searchInput')?.addEventListener('input', e => {
     renderSidebar(e.target.value);
   });
 
-  document.getElementById('popupClose').addEventListener('click', closePopup);
+  document.getElementById('popupClose')?.addEventListener('click', closePopup);
 
   setTimeout(() => selectPlace(1), 400);
 });
-
-setTimeout(() => { leafMap.invalidateSize(); }, 300);
