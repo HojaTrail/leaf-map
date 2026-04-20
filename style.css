@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to right, #e8efe6, #dfe7d8);
+  cursor: none;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #f4f7f2;
+}
+
+.leaf-btn {
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #d9c2a3;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.leaf-btn.green {
+  background: #4e6b4a;
+  color: white;
+}
+
+main {
+  display: flex;
+}
+
+.sidebar {
+  width: 280px;
+  padding: 20px;
+  background: #f1f4ef;
+}
+
+.search {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+#map {
+  height: 90vh;
+  flex: 1;
+}
+
+li {
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.details-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.custom-cursor {
+  width: 30px;
+  height: 30px;
+  background: url('../img/tree.png') no-repeat center;
+  background-size: contain;
+  position: absolute;
+  pointer-events: none;
+}
+
+.leaf {
+  width: 8px;
+  height: 8px;
+  background: green;
+  position: absolute;
+  border-radius: 50%;
+  animation: fade 0.8s forwards;
+}
+
+@keyframes fade {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

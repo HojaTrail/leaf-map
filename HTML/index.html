@@ -3,19 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>HojaTrail</title>
+
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 </head>
+
 <body>
 
 <header class="top-bar">
   <div class="logo">
     🌿 <h1>HojaTrail</h1>
-    <p>Follow the trail to your next read!</p>
+    <p>Explora la naturaleza</p>
   </div>
 
   <nav>
-    <a href="index.html" class="leaf-btn">Mapas</a>
-    <a href="store.html" class="leaf-btn green">Rutas</a>
+    <button class="leaf-btn" onclick="setView('books')">Maps</button>
+    <button class="leaf-btn green" onclick="setView('nature')">Spots</button>
     <a href="about.html" class="leaf-btn">About</a>
   </nav>
 </header>
+
+<main>
+  <aside class="sidebar">
+    <input type="text" id="search" placeholder="Buscar..." class="search"/>
+    <h2>Locations</h2>
+    <ul id="location-list"></ul>
+  </aside>
+
+  <section id="map"></section>
+</main>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/map.js"></script>
+<script src="js/app.js"></script>
+<script src="js/cursor.js"></script>
+
+</body>
+</html>

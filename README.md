@@ -22,7 +22,7 @@
 ### Elements used: 
 - HTML (index.html, store.html, about.html)
 - CSS (styling)
-- JS (app.js, map.js)
+- JS (app.js, map.js, cursor.js)
 - API (maybe...)
 
 ## ABOUT: HOJATRAIL 
@@ -36,3 +36,5 @@ The ultimate goal here is to blend technology and nature to inspire exploration.
 
 * For the map, I had to approach a demo like option since making an API is a bit difficult...I got a similar effect using Leaflet and filtered data to make it feel like a real map. 
 * https://leafletjs.com/
+* I wnat my cursor to be a leaf or a tree that has a trail of leaves, as if they are falling from the tree. 
+

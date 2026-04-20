@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="top-bar">
+  <h1>HojaTrail</h1>
+  <a href="index.html">← Back</a>
+</header>
+
+<main class="details">
+  <div id="store-info" class="details-card"></div>
+</main>
+
+<script>
+  const data = JSON.parse(localStorage.getItem("selectedPlace"));
+
+  document.getElementById("store-info").innerHTML = `
+    <h2>${data.name}</h2>
+    <p>${data.description}</p>
+    <p><strong>Type:</strong> ${data.type}</p>
+  `;
+</script>
+
+<script src="js/cursor.js"></script>
+</body>
+</html>
