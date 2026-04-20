@@ -1,5 +1,9 @@
 /* ─── Reset & Base ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
   --green-dark:   #2d4a2d;
@@ -18,17 +22,20 @@
   --nav-height:   64px;
 }
 
-/* Leaf cursor */
-* { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 28 C8 20 6 10 16 4 C26 10 24 20 28 28 C20 24 12 24 4 28Z' fill='%234a7c59' stroke='%23fff' stroke-width='1'/%3E%3Cline x1='16' y1='4' x2='10' y2='26' stroke='%23fff' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") 4 28, auto; }
-
-a, button, input, [role="button"] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 28 C8 20 6 10 16 4 C26 10 24 20 28 28 C20 24 12 24 4 28Z' fill='%234a7c59' stroke='%23fff' stroke-width='1'/%3E%3Cline x1='16' y1='4' x2='10' y2='26' stroke='%23fff' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") 4 28, pointer !important;
+/* ─── Cursor ─── */
+* {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 28 C8 20 6 10 16 4 C26 10 24 20 28 28 C20 24 12 24 4 28Z' fill='%234a7c59' stroke='%23fff' stroke-width='1'/%3E%3Cline x1='16' y1='4' x2='10' y2='26' stroke='%23fff' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") 4 28, auto;
 }
 
-html, body { height: 100%; overflow: hidden; }
+a, button, input, [role="button"] {
+  cursor: pointer;
+}
 
-body {
-  font-family: 'Georgia', 'Times New Roman', serif;
+/* ─── Base Layout ─── */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
   background: var(--bg-main);
   color: var(--text-primary);
 }
@@ -36,7 +43,9 @@ body {
 /* ─── NAV ─── */
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: var(--nav-height);
   display: flex;
   align-items: center;
@@ -54,29 +63,27 @@ nav {
   text-decoration: none;
 }
 
-.logo svg { width: 38px; height: 38px; flex-shrink: 0; }
-
-.logo-text { line-height: 1; }
-.logo-text h1 { font-size: 22px; font-weight: 700; color: var(--text-primary); }
-.logo-text p  { font-size: 11px; color: var(--text-muted); font-style: italic; letter-spacing: .05em; margin-top: 1px; }
-
-.nav-btns { display: flex; gap: 10px; }
+.nav-btns {
+  display: flex;
+  gap: 10px;
+}
 
 .nav-btn {
   padding: 8px 22px;
   border-radius: 50px;
   border: none;
-  font-family: 'Georgia', serif;
-  font-size: 14px;
-  font-weight: 500;
-  transition: transform .15s, opacity .15s, box-shadow .15s;
+  font-family: Georgia, serif;
+  transition: 0.15s;
 }
-.nav-btn:hover { transform: scale(1.04); opacity: .9; }
-.nav-btn.active { box-shadow: 0 0 0 3px rgba(74,124,89,.35); }
 
-.btn-mapas  { background: var(--amber);      color: var(--amber-dark); }
-.btn-rutas  { background: var(--green-mid);  color: var(--green-pale); }
-.btn-about  { background: var(--green-dark); color: var(--green-pale); }
+.nav-btn:hover {
+  transform: scale(1.04);
+}
+
+/* ─── COLORS ─── */
+.btn-mapas { background: var(--amber); color: var(--amber-dark); }
+.btn-rutas { background: var(--green-mid); color: var(--green-pale); }
+.btn-about { background: var(--green-dark); color: var(--green-pale); }
 
 /* ─── LAYOUT ─── */
 .app-body {
@@ -88,22 +95,90 @@ nav {
 /* ─── SIDEBAR ─── */
 .sidebar {
   width: 290px;
-  min-width: 290px;
   background: var(--bg-sidebar);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 100;
 }
 
-/* (rest of your CSS continues EXACTLY the same…) */
+.search-wrap {
+  padding: 14px;
+  position: relative;
+}
 
-/* IMPORTANT FIX */
+.search-wrap input {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+/* LIST */
+.places-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.place-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #dde8d0;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+.place-item:hover {
+  background: #dff0d8;
+}
+
+.place-item.active {
+  background: #dff0d8;
+}
+
+/* ─── MAP ─── */
+.map-area {
+  flex: 1;
+  position: relative;
+}
+
 #map {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+}
+
+/* ─── POPUP ─── */
+.popup-card {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 310px;
+  background: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.14);
+  display: none;
+  z-index: 500;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* ─── PANELS ─── */
+.about-panel,
+.rutas-panel {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-panel.visible,
+.rutas-panel.visible {
+  display: flex;
 }
