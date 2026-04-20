@@ -208,3 +208,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(() => selectPlace(1), 400);
 });
+
+setTimeout(() => { leafMap.invalidateSize(); }, 300);
