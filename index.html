@@ -1,11 +1,74 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HojaTrail — Explora la naturaleza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HojaTrail</title>
 
-  <!-- Leaflet for real map tiles -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-text">
+      <h1>HojaTrail</h1>
+      <p>Explora la naturaleza</p>
+    </div>
+  </a>
+
+  <div class="nav-btns">
+    <button class="nav-btn btn-mapas active" data-view="mapas">Mapas</button>
+    <button class="nav-btn btn-rutas" data-view="rutas">Rutas</button>
+    <button class="nav-btn btn-about" data-view="about">About</button>
+  </div>
+</nav>
+
+<div class="app-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="search-wrap">
+      <input id="searchInput" type="text" placeholder="Buscar..." />
+    </div>
+
+    <div class="places-list" id="placesList"></div>
+  </aside>
+
+  <!-- MAP -->
+  <div class="map-area">
+    <div id="map"></div>
+
+    <!-- POPUP -->
+    <div class="popup-card" id="popupCard">
+      <div class="popup-close" id="popupClose">✕</div>
+      <h2 id="popupName"></h2>
+      <p id="popupType"></p>
+      <p id="popupAddr"></p>
+      <p id="popupDesc"></p>
+      <button id="popupMapBtn">Ver en mapa</button>
+    </div>
+
+    <!-- PANELS -->
+    <div class="about-panel" id="aboutPanel"></div>
+    <div class="rutas-panel" id="rutasPanel">
+      <div class="rutas-grid" id="rutasGrid"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="app.js"></script>
+</body>
+</html>
